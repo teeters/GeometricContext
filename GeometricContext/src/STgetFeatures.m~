@@ -1,0 +1,14 @@
+function [spdata, vpdata] = STgetSuperpixelFeatures(image, imsegs)
+    [doog_filters, texton_data] = APPgetImageFilters;
+
+    % compute features
+    spdata = APPgetSpData(image, doog_filters, texton_data.tim, imsegs);
+    [spdata.hue, spdata.sat, tmp] = rgb2hsv(image);
+
+
+    imsize = size(image);
+    minEdgeLen = sqrt(imsize(1)^2+imsize(2)^2)*0.02;
+    [vpdata.lines, vpdata.spinfo] = ...
+        APPgetLargeConnectedEdges(rgb2gray(image), minEdgeLen, imsegs);
+    [vpdata.v, vpdata.vars, vpdata.p, vpdata.hpos] = ...
+        APPestimateVp(vpdata.lines, imsize(1:2), 0);

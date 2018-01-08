@@ -1,0 +1,22 @@
+README for CMU Geometric Context Dataset
+Derek Hoiem, Alexei A. Efros, Martial Hebert
+dhoiem@cs.cmu.edu
+
+Copyright (C) 2006 Derek Hoiem, Carnegie Mellon University
+
+Please cite our ICCV'05 Geometric Context from a Single Image if you use 
+this dataset.  
+
+Note that all images were contained using Google image search, using 
+keywords such as "city", "outdoor", "field", and "road".  The original 
+content providers maintain copyrights on these images.
+
+Contents:
+  *.jpg: 300 images used for training and testing
+  allimsegs2.mat: contains ground truth
+	imsegs: for each image contains superpixel images (segimage) and 
+	ground truth label for each superpixel (vert_labels, horz_labels)
+  rand_indices.mat: 
+	cluster_images: indices for learning segmentation
+	cv_images: indices for cross-validation (in blocks of 50)
+
